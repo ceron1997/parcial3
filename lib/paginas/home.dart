@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:cached_network_image/cached_network_image.dart';
-
+import "package:flutter_feather_icons/flutter_feather_icons.dart";
 import 'detallepokemon.dart';
 
 class Home extends StatefulWidget {
@@ -27,12 +27,18 @@ class _HomeState extends State<Home> {
             Positioned(
               top: 50,
               left: 20,
-              child: Text(
-                "parcial 3 api games  ",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
+              child: Row(
+                children: [
+                  IconButton(
+                      onPressed: () {}, icon: Icon(FeatherIcons.playCircle)),
+                  Text(
+                    "PARCIAL 3 API GAMES ",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ],
               ),
             ),
             Positioned(
@@ -55,10 +61,45 @@ class _HomeState extends State<Home> {
                                   vertical: 4.0, horizontal: 8),
                               child: Container(
                                   decoration: BoxDecoration(
-                                      color: pokedesk[index]['genre'][0] ==
-                                              "Shooter"
-                                          ? Colors.blueAccent
-                                          : Colors.blueAccent,
+                                       color: pokedesk[index]['genre'][0] == "Shooter"
+                                          ? Colors.greenAccent
+                                          : pokedesk[index]['genre'][0] ==
+                                                  "MMOARPG"
+                                              ? Colors.redAccent
+                                              : pokedesk[index]['genre'][0] ==
+                                                      "ARPG"
+                                                  ? Colors.blue
+                                                  : pokedesk[index]['genre']
+                                                              [0] ==
+                                                          "Strategy"
+                                                      ? Colors.deepPurpleAccent
+                                                      : pokedesk[index]['genre']
+                                                                  [0] ==
+                                                              "Fighting"
+                                                          ? Colors.amber
+                                                          : pokedesk[index]['genre']
+                                                                      [0] ==
+                                                                  "Action RPG"
+                                                              ? Colors.grey
+                                                              : pokedesk[index]
+                                                                              ['genre']
+                                                                          [0] ==
+                                                                      "Battle Royale"
+                                                                  ? Colors.brown
+                                                                  : pokedesk[index]['genre'][0] ==
+                                                                          "Fighting"
+                                                                      ? Colors
+                                                                          .indigo
+                                                                      : pokedesk[index]['genre'][0] ==
+                                                                              "MOBA"
+                                                                          ? Colors.orange
+                                                                          : pokedesk[index]['genre'][0] == "Sports"
+                                                                              ? Colors.lightGreenAccent
+                                                                              : pokedesk[index]['genre'][0] == "Card Game"
+                                                                                  ? Colors.deepPurple
+                                                                                  : pokedesk[index]['genre'][0] == "MMOFPS"
+                                                                                      ? Colors.black26
+                                                                                      : Colors.blueAccent,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
                                   child: Stack(children: [
@@ -146,7 +187,7 @@ class _HomeState extends State<Home> {
       if (value.statusCode == 200) {
         pokedesk = jsonDecode(value.body);
 
-        print(pokedesk[2]['title']);
+       // print(pokedesk[1]['genre']);
         // print(pokedesk);
         setState(() {});
       }
